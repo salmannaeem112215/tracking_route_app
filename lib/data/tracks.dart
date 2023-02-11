@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tracking_route_app/models/location.dart';
 import 'package:tracking_route_app/models/stop.dart';
 import 'package:tracking_route_app/models/time.dart';
-import '../models/track.dart';
+import 'track.dart';
 
 class Tracks extends ChangeNotifier {
   List<Track> _tracks = [
@@ -89,6 +89,11 @@ class Tracks extends ChangeNotifier {
     final track =
         _tracks.firstWhere((element) => element.isMatched(name, isMorning));
 
+    return track;
+  }
+
+  Track getTrackAt(int index) {
+    final track = _tracks.elementAt(index);
     return track;
   }
   ////////////////////////////

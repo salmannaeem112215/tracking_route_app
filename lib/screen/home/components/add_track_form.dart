@@ -5,6 +5,8 @@ import 'package:tracking_route_app/components/two_checkbox.dart';
 import 'package:tracking_route_app/data/tracks.dart';
 import 'package:tracking_route_app/screen/home/components/route_name_field.dart';
 
+import '../../../components/cancel_button.dart';
+
 class AddTrackForm extends StatefulWidget {
   const AddTrackForm({super.key});
 
@@ -19,27 +21,28 @@ class _AddTrackFormState extends State<AddTrackForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: AlertDialog(
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RouteNameField(controller: _nameController),
-              const SizedBox(height: 10),
-              TwoCheckBox(
-                updateValue: _checkBoxClick,
-                firstValue: 'Morning ',
-                secondValue: 'Evening',
-              ),
-            ],
-          ),
-          actions: [
-            SaveButton(onPress: () => _save(context)),
-            const SizedBox(width: 5),
-            CloseButton(onPressed: () => _cancel(context)),
-          ]),
+    return AlertDialog(
+      content: Form(
+        key: _formKey,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            RouteNameField(controller: _nameController),
+            const SizedBox(height: 10),
+            TwoCheckBox(
+              updateValue: _checkBoxClick,
+              firstValue: 'Morning ',
+              secondValue: 'Evening',
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        SaveButton(onPress: () => _save(context)),
+        const SizedBox(width: 5),
+        CancelButton(onPress: () => _cancel(context)),
+      ],
     );
   }
 

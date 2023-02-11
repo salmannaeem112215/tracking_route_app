@@ -4,6 +4,7 @@ import 'package:tracking_route_app/routes.dart';
 
 import './screen/home/home_screen.dart';
 import 'package:provider/provider.dart';
+import 'models/stops.dart';
 
 void main() {
   runApp(const MyApp());

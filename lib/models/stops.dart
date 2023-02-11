@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../models/location.dart';
-import '../models/stop.dart';
+import 'location.dart';
+import 'stop.dart';
 
-class Stops extends ChangeNotifier {
+class Stops {
   Stops(List<Stop> s) {
     stops = s;
   }
+  Stops.n() : stops = [] {}
 
   List<Stop> stops = [];
 
@@ -29,11 +30,10 @@ class Stops extends ChangeNotifier {
         timeOfArrival: timeOfArrival,
         routeNo: routeNo,
         isMorning: isMorning));
-    notifyListeners();
   }
 
   void removeStop(int index) {
     stops.removeAt(index);
-    notifyListeners();
+    print('Remove Stop');
   }
 }

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:tracking_route_app/screen/tracking/components/add_stop.dart';
 import 'package:tracking_route_app/screen/tracking/components/play_pause_button.dart';
 
+import '../../../components/text_with_widget.dart';
+
 class BottomNavbar extends StatelessWidget {
-  const BottomNavbar({super.key});
+  const BottomNavbar({super.key, required this.addStop});
+  final Function(String name) addStop;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,7 @@ class BottomNavbar extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               onTap: () => showDialog(
                 context: context,
-                builder: (context) => Container(),
+                builder: (context) => AddStop(onSave: addStop),
               ),
               child: Icon(
                 Icons.add_location_rounded,
@@ -37,23 +41,6 @@ class BottomNavbar extends StatelessWidget {
           // const Spacer(),
         ],
       ),
-    );
-  }
-}
-
-class TextWithWidget extends StatelessWidget {
-  const TextWithWidget({super.key, required this.widget, required this.text});
-  final Widget widget;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        widget,
-        Text(text),
-      ],
     );
   }
 }

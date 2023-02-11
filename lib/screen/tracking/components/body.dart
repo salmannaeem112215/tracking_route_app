@@ -1,10 +1,12 @@
 // ignore_for_file: sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:tracking_route_app/screen/tracking/components/bus_stops.dart';
+import 'package:tracking_route_app/screen/tracking/tracking_screen.dart';
 
 class Body extends StatelessWidget {
-  const Body({super.key, required this.name});
-  final String name;
+  const Body({super.key, required this.index});
+  final int index;
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -25,7 +27,9 @@ class Body extends StatelessWidget {
             ),
             Container(
               height: boxHeight,
-              child: const Placeholder(),
+              child: BusStops(
+                index: index,
+              ),
             ),
             Container(
               height: boxHeight,

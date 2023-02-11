@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_route_app/models/location.dart';
 
-class PathPoints extends ChangeNotifier {
+class PathPoints {
   PathPoints(List<Location> l) {
     path = l;
   }
@@ -30,11 +30,9 @@ class PathPoints extends ChangeNotifier {
 
   void addLocation({required double lat, required double lon}) {
     path.add(Location(lat: lat, lon: lon));
-    notifyListeners();
   }
 
   void removeLocation(int index) {
     path.removeAt(index);
-    notifyListeners();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CloseButton extends StatelessWidget {
-  const CloseButton({super.key, required this.onPress});
+class CancelButton extends StatelessWidget {
+  const CancelButton({super.key, required this.onPress});
   final Function onPress;
 
   @override

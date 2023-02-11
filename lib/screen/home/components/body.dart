@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tracking_route_app/models/stops.dart';
 import 'package:tracking_route_app/data/tracks.dart';
 import 'package:tracking_route_app/screen/tracking/tracking_screen.dart';
 
@@ -10,26 +11,35 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<Tracks>(
-      builder: (context, value, child) => ListView.builder(
-        itemCount: value.getTracks().length,
-        itemBuilder: (context, index) => TrackTile(
-          trackName: value.getTracks()[index].name,
-          totalStops: value.getTracks()[index].busStops.stops.length,
-          isMoring: value.getTracks()[index].isMorning,
-          onPress: () {
-            Navigator.pushNamed(context, TrackingScreen.routeName);
-          },
-          onDelete: () {
-            value.removeTrack(index);
-          },
-          onUpload: () {
-            // ignore: avoid_print
-            print('Uploading Data to Firebase');
-          },
-          // Default Values
+    return Consumer<Tracks>(builder: (context, value, child) {
+      final tracks = value.getTracks();
+
+      return ListView.builder(
+        itemCount: tracks.length,
+        itemBuilder: (ctx, index) => ChangeNotifierProvider(
+          create: (context) => tracks[index],
+          child: TrackTile(
+            trackName: value.getTracks()[index].name,
+            totalStops: value.getTracks()[index].busStops.stops.length,
+            isMoring: value.getTracks()[index].isMorning,
+            onPress: () {
+              Navigator.pushNamed(
+                ctx,
+                TrackingScreen.routeName,
+                arguments: index,
+              );
+            },
+            onDelete: () {
+              value.removeTrack(index);
+            },
+            onUpload: () {
+              // ignore: avoid_print
+              print('Uploading Data to Firebase');
+            },
+            // Default Values
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
