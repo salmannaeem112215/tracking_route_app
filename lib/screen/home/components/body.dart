@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tracking_route_app/data/tracks.dart';
+import 'package:tracking_route_app/screen/tracking/tracking_screen.dart';
 
 import './track_tile.dart';
 
@@ -17,8 +18,7 @@ class Body extends StatelessWidget {
           totalStops: value.getTracks()[index].busStops.stops.length,
           isMoring: value.getTracks()[index].isMorning,
           onPress: () {
-            // ignore: avoid_print
-            print('Track Data File');
+            Navigator.pushNamed(context, TrackingScreen.routeName);
           },
           onDelete: () {
             value.removeTrack(index);

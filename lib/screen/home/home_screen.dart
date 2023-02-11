@@ -15,7 +15,8 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
           onPressed: () {
-            showDialog(context: context, builder: (context) => AddTrackForm());
+            showDialog(
+                context: context, builder: (context) => const AddTrackForm());
           }),
     );
   }

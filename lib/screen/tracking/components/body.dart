@@ -5,6 +5,33 @@ class Body extends StatelessWidget {
   final String name;
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final mediaQuery = MediaQuery.of(context);
+    double screenSize = mediaQuery.size.height -
+        mediaQuery.padding.top -
+        mediaQuery.padding.bottom;
+    double mapHeight = screenSize / 2;
+    double boxHeight = screenSize / 2;
+
+    return SingleChildScrollView(
+      child: SizedBox(
+        height: mapHeight + boxHeight + boxHeight,
+        child: Column(
+          children: [
+            SizedBox(
+              height: mapHeight,
+              child: const Placeholder(),
+            ),
+            Container(
+              height: boxHeight,
+              child: const Placeholder(),
+            ),
+            Container(
+              height: boxHeight,
+              child: const Placeholder(),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
