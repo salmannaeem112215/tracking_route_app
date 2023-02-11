@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tracking_route_app/data/tracks.dart';
 import 'package:tracking_route_app/routes.dart';
 
 import './screen/home/home_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,13 +15,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider(
+      create: (context) => Tracks(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: HomeScreen.routeName,
+        routes: routes,
       ),
-      initialRoute: HomeScreen.routeName,
-      routes: routes,
     );
   }
 }
