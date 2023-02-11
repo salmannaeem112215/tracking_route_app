@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:tracking_route_app/models/location.dart';
+import './location.dart';
 
 class PathPoints {
   PathPoints(List<Location> l) {

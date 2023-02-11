@@ -50,7 +50,6 @@ class Track extends ChangeNotifier {
       isMorning: isMorning,
     ));
     notifyListeners();
-    print('Notify Listner');
   }
 
   void removeStop(int index) {

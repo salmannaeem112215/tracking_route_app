@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tracking_route_app/screen/home/components/add_track_form.dart';
 
+import './components/add_track_form.dart';
 import './components/body.dart';
-
-import 'package:tracking_route_app/data/tracks.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

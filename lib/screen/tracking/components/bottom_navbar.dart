@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tracking_route_app/screen/tracking/components/add_stop.dart';
-import 'package:tracking_route_app/screen/tracking/components/play_pause_button.dart';
 
+import './add_stop.dart';
+import './play_pause_button.dart';
 import '../../../components/text_with_widget.dart';
 
 class BottomNavbar extends StatelessWidget {

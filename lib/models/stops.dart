@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-
-import 'location.dart';
-import 'stop.dart';
+import './location.dart';
+import './stop.dart';
 
 class Stops {
   Stops(List<Stop> s) {
     stops = s;
   }
-  Stops.n() : stops = [] {}
+  Stops.n() : stops = [];
 
   List<Stop> stops = [];
 
@@ -34,6 +32,5 @@ class Stops {
 
   void removeStop(int index) {
     stops.removeAt(index);
-    print('Remove Stop');
   }
 }

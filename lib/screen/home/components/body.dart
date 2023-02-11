@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tracking_route_app/models/stops.dart';
-import 'package:tracking_route_app/data/tracks.dart';
-import 'package:tracking_route_app/screen/tracking/tracking_screen.dart';
 
+import '../../../data/tracks.dart';
+import '../../tracking/tracking_screen.dart';
 import './track_tile.dart';
 
 class Body extends StatelessWidget {

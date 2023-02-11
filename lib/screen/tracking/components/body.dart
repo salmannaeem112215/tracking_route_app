@@ -1,8 +1,8 @@
 // ignore_for_file: sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
-import 'package:tracking_route_app/screen/tracking/components/bus_stops.dart';
-import 'package:tracking_route_app/screen/tracking/tracking_screen.dart';
+
+import './bus_stops.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key, required this.index});

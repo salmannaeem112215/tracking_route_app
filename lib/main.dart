@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tracking_route_app/data/tracks.dart';
-import 'package:tracking_route_app/routes.dart';
-
-import './screen/home/home_screen.dart';
 import 'package:provider/provider.dart';
-import 'models/stops.dart';
+
+import './routes.dart';
+import '../data/tracks.dart';
+import './screen/home/home_screen.dart';
 
 void main() {
   runApp(const MyApp());

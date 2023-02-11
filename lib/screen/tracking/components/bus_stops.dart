@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:tracking_route_app/data/tracks.dart';
-import 'package:tracking_route_app/data/track.dart';
+import '../../../data/track.dart';
 import './stop_tile.dart';
 
 class BusStops extends StatelessWidget {
@@ -13,7 +12,6 @@ class BusStops extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    final track = Provider.of<Tracks>(context, listen: false).getTrackAt(index);
     return Consumer<Track>(
       builder: (context, track, child) => ListView.builder(
         itemCount: track.busStops.stops.length,
@@ -23,9 +21,7 @@ class BusStops extends StatelessWidget {
           time: '6:30',
           isAm: true,
           onDelete: () {
-            print('Delte Start');
-            track.busStops.removeStop(index);
-            print('Delte End');
+            track.removeStop(index);
           },
         ),
       ),
