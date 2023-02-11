@@ -15,12 +15,19 @@ class Body extends StatelessWidget {
         itemBuilder: (context, index) => TrackTile(
           trackName: value.getTracks()[index].name,
           totalStops: value.getTracks()[index].busStops.stops.length,
-          onPress: () {},
-          onDelete: () {},
-          onUpload: () {},
+          isMoring: value.getTracks()[index].isMorning,
+          onPress: () {
+            // ignore: avoid_print
+            print('Track Data File');
+          },
+          onDelete: () {
+            value.removeTrack(index);
+          },
+          onUpload: () {
+            // ignore: avoid_print
+            print('Uploading Data to Firebase');
+          },
           // Default Values
-          date: '2021-02-01',
-          time: '06:30 AM',
         ),
       ),
     );

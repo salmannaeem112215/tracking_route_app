@@ -5,17 +5,16 @@ class TrackTile extends StatelessWidget {
   const TrackTile({
     super.key,
     required this.trackName,
+    required this.isMoring,
     required this.totalStops,
-    required this.date,
-    required this.time,
     required this.onPress,
     required this.onDelete,
     required this.onUpload,
   });
   final String trackName;
   final int totalStops;
-  final String date;
-  final String time;
+  final bool isMoring;
+
   final Function onPress;
   final Function onDelete;
   final Function onUpload;
@@ -63,13 +62,7 @@ class TrackTile extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Chip(
-                    label: Text(date),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Chip(
-                    label: Text(time),
+                    label: Text(isMoring ? "Morning" : "Evening"),
                   ),
                 ),
               ],

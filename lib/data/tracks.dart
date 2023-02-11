@@ -12,64 +12,77 @@ class Tracks extends ChangeNotifier {
 
   List<Track> _tracks = [
     // Default Tracks
-    Track(name: 'Route 5 Morning', stops: [
-      Stop(
-        name: 'Qainchi',
-        description: "Near KFC PLAZA",
-        location: const Location.latLon(31.46399057144011, 74.34861657311502),
-        timeOfArrival: TimeFuncs.stringToDateTime('2022-02-08 06:30:00'),
-        routeNo: "5",
-        isMorning: false,
-      ),
-      Stop(
-        name: 'Pacakges Gate 3',
-        description: "Near KFC PLAZA",
-        location: const Location.latLon(31.472189828898024, 74.35277936151842),
-        timeOfArrival: TimeFuncs.stringToDateTime('2022-02-08 06:35:00'),
-        routeNo: "5",
-        isMorning: false,
-      ),
-    ], path: [
-      const Location.lonLat(74.348862, 31.464016),
-      const Location.lonLat(74.348866, 31.464927),
-      const Location.lonLat(74.348871, 31.465164),
-      const Location.lonLat(74.348889, 31.46559),
-      const Location.lonLat(74.34892, 31.465769),
-      const Location.lonLat(31.472189828898024, 74.35277936151842),
-    ]),
-    Track(name: 'Route 5 Eveneing', stops: [
-      Stop(
-        name: 'Qainchi',
-        description: "Near KFC PLAZA",
-        location: const Location.latLon(31.46399057144011, 74.34861657311502),
-        timeOfArrival: TimeFuncs.stringToDateTime('2022-02-08 06:30:00'),
-        routeNo: "5",
-        isMorning: false,
-      ),
-      Stop(
-        name: 'Pacakges Gate 3',
-        description: "Near KFC PLAZA",
-        location: const Location.latLon(31.472189828898024, 74.35277936151842),
-        timeOfArrival: TimeFuncs.stringToDateTime('2022-02-08 06:35:00'),
-        routeNo: "5",
-        isMorning: false,
-      ),
-    ], path: [
-      const Location.lonLat(74.348862, 31.464016),
-      const Location.lonLat(74.348866, 31.464927),
-      const Location.lonLat(74.348871, 31.465164),
-      const Location.lonLat(74.348889, 31.46559),
-      const Location.lonLat(74.34892, 31.465769),
-      const Location.lonLat(31.472189828898024, 74.35277936151842),
-    ])
+    Track(
+      name: 'Route 5 Morning',
+      isMoring: true,
+      stops: [
+        Stop(
+          name: 'Qainchi',
+          description: "Near KFC PLAZA",
+          location: const Location.latLon(31.46399057144011, 74.34861657311502),
+          timeOfArrival: TimeFuncs.stringToDateTime('2022-02-08 06:30:00'),
+          routeNo: "5",
+          isMorning: false,
+        ),
+        Stop(
+          name: 'Pacakges Gate 3',
+          description: "Near KFC PLAZA",
+          location:
+              const Location.latLon(31.472189828898024, 74.35277936151842),
+          timeOfArrival: TimeFuncs.stringToDateTime('2022-02-08 06:35:00'),
+          routeNo: "5",
+          isMorning: false,
+        ),
+      ],
+      path: [
+        const Location.lonLat(74.348862, 31.464016),
+        const Location.lonLat(74.348866, 31.464927),
+        const Location.lonLat(74.348871, 31.465164),
+        const Location.lonLat(74.348889, 31.46559),
+        const Location.lonLat(74.34892, 31.465769),
+        const Location.lonLat(31.472189828898024, 74.35277936151842),
+      ],
+    ),
+    Track(
+      name: 'Route 5 ',
+      isMoring: false,
+      stops: [
+        Stop(
+          name: 'Qainchi',
+          description: "Near KFC PLAZA",
+          location: const Location.latLon(31.46399057144011, 74.34861657311502),
+          timeOfArrival: TimeFuncs.stringToDateTime('2022-02-08 06:30:00'),
+          routeNo: "5",
+          isMorning: false,
+        ),
+        Stop(
+          name: 'Pacakges Gate 3',
+          description: "Near KFC PLAZA",
+          location:
+              const Location.latLon(31.472189828898024, 74.35277936151842),
+          timeOfArrival: TimeFuncs.stringToDateTime('2022-02-08 06:35:00'),
+          routeNo: "5",
+          isMorning: false,
+        ),
+      ],
+      path: [
+        const Location.lonLat(74.348862, 31.464016),
+        const Location.lonLat(74.348866, 31.464927),
+        const Location.lonLat(74.348871, 31.465164),
+        const Location.lonLat(74.348889, 31.46559),
+        const Location.lonLat(74.34892, 31.465769),
+        const Location.lonLat(31.472189828898024, 74.35277936151842),
+      ],
+    )
   ];
 
   List<Track> getTracks() {
     return _tracks;
   }
 
-  void addTrack(String trackName) {
-    _tracks.add(Track(name: trackName, stops: [], path: []));
+  void addTrack({required String trackName, required bool isMoring}) {
+    _tracks
+        .add(Track(name: trackName, isMoring: isMoring, stops: [], path: []));
     notifyListeners();
   }
 

@@ -6,14 +6,19 @@ import './location.dart';
 
 class Track {
   final String name;
+  final bool isMorning;
   Stops busStops = Stops([]);
   PathPoints busPath = PathPoints([]);
 
   Track.databas(
-      {required this.name, required this.busStops, required this.busPath});
+      {required this.name,
+      required this.busStops,
+      required this.busPath,
+      required this.isMorning});
 
   Track({
     required this.name,
+    required this.isMorning,
     required List<Stop> stops,
     required List<Location> path,
   }) {
