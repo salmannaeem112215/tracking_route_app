@@ -47,7 +47,7 @@ class TrackTile extends StatelessWidget {
               children: [
                 TextSpan(
                     text: trackName,
-                    style: TextStyle(fontWeight: FontWeight.normal))
+                    style: const TextStyle(fontWeight: FontWeight.normal))
               ],
               style: const TextStyle(
                 fontWeight: FontWeight.bold,

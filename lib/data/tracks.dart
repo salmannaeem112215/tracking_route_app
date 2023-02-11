@@ -128,14 +128,14 @@ class Tracks extends ChangeNotifier {
 
   // return the counter value for new Track to be add
   int getCounter(String name, bool isMorning, {int count = 0}) {
-    String _name = name;
+    String counterName = name;
     int count = 0;
 
     // Iterate for each Item in Tracks
     for (int i = 0; i < _tracks.length; i++) {
-      if (_tracks[i].isMatched(_name, isMorning)) {
+      if (_tracks[i].isMatched(counterName, isMorning)) {
         count++;
-        _name = _counterFormat(name, count);
+        counterName = _counterFormat(name, count);
       }
     }
 
