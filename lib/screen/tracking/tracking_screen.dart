@@ -6,11 +6,13 @@ class TrackingScreen extends StatelessWidget {
   const TrackingScreen({super.key});
   static String routeName = '/tracking';
 
+  final String name = 'route5';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Body(),
+      body: Body(name: name),
     );
   }
 }

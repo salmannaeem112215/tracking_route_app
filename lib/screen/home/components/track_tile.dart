@@ -41,7 +41,18 @@ class TrackTile extends StatelessWidget {
         borderRadius: const BorderRadius.horizontal(left: Radius.circular(10)),
       ),
       child: ListTile(
-        title: Text(trackName),
+        title: RichText(
+          text: TextSpan(
+              text: 'ROUTE : ',
+              children: [
+                TextSpan(
+                    text: trackName,
+                    style: TextStyle(fontWeight: FontWeight.normal))
+              ],
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
+        ),
         trailing: IconButton(
           icon: const Icon(Icons.arrow_forward_ios_rounded),
           onPressed: () => onPress(),

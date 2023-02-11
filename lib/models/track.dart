@@ -25,4 +25,8 @@ class Track {
     busStops.stops = stops;
     busPath.path = path;
   }
+
+  bool isMatched(String trackName, bool trackIsMoring) {
+    return (name == trackName && isMorning == trackIsMoring);
+  }
 }

@@ -42,7 +42,8 @@ class _AddTrackFormState extends State<AddTrackForm> {
                 }
               },
               decoration: InputDecoration(
-                hintText: "Route Name",
+                label: const Text('Route Name'),
+                hintText: "5",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5),
                 ),
@@ -71,7 +72,7 @@ class _AddTrackFormState extends State<AddTrackForm> {
                 if (_formKey.currentState!.validate()) {
                   Provider.of<Tracks>(listen: false, context).addTrack(
                     trackName: _nameController.text,
-                    isMoring: _isMorning,
+                    isMorning: _isMorning,
                   );
                   Navigator.pop(context);
                   _clear();
