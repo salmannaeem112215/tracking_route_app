@@ -10,12 +10,16 @@ import './components/bottom_navbar.dart';
 class TrackingScreen extends StatelessWidget {
   const TrackingScreen({super.key});
   static String routeName = '/tracking';
+
   @override
   Widget build(BuildContext context) {
-    final track = Provider.of<Tracks>(listen: false, context).getTrackAt(0);
+    int index = ModalRoute.of(context)!.settings.arguments as int;
+    print(index);
+    final track = Provider.of<Tracks>(listen: false, context).getTrackAt(index);
 
-    return ChangeNotifierProvider(
-      create: (context) => track,
+    return ChangeNotifierProvider.value(
+      value: track,
+      // create: (context) => track,
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -34,7 +38,7 @@ class TrackingScreen extends StatelessWidget {
           },
         ),
         body: Body(
-          index: 0,
+          index: index,
         ),
       ),
     );
