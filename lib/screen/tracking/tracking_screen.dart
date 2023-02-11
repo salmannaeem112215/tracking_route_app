@@ -14,12 +14,11 @@ class TrackingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int index = ModalRoute.of(context)!.settings.arguments as int;
-    print(index);
     final track = Provider.of<Tracks>(listen: false, context).getTrackAt(index);
 
+    // .value to not dispose track
     return ChangeNotifierProvider.value(
       value: track,
-      // create: (context) => track,
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -28,6 +27,7 @@ class TrackingScreen extends StatelessWidget {
         ),
         bottomNavigationBar: BottomNavbar(
           addStop: (String name) {
+            print(name);
             track.addStop(
               title: name,
               location: Location(lat: 32, lon: 64), // default Location

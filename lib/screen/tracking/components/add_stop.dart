@@ -38,6 +38,7 @@ class AddStop extends StatelessWidget {
 
   _onSave(BuildContext context) {
     final stopName = _controller.text;
+    print(_controller.text);
     // Code to perform on Save
     onSave(stopName);
     _clear();

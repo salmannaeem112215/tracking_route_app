@@ -6,7 +6,7 @@ import '../../../components/text_with_widget.dart';
 
 class BottomNavbar extends StatelessWidget {
   const BottomNavbar({super.key, required this.addStop});
-  final Function(String name) addStop;
+  final Function(String) addStop;
 
   @override
   Widget build(BuildContext context) {

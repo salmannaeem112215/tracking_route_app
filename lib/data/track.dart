@@ -42,7 +42,7 @@ class Track extends ChangeNotifier {
       required bool isMorning,
       String description = ""}) {
     busStops.stops.add(Stop(
-      name: name,
+      name: title,
       description: description,
       location: location,
       timeOfArrival: timeOfArrival,
