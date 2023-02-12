@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracking_route_app/constants.dart';
 
 class StopTile extends StatelessWidget {
   const StopTile({
@@ -21,7 +22,7 @@ class StopTile extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 5, left: 20, right: 20),
       decoration: BoxDecoration(
-        color: Colors.grey.shade100,
+        color: kDarkTileColor,
         borderRadius: BorderRadius.circular(5),
       ),
       child: ListTile(
@@ -31,9 +32,15 @@ class StopTile extends StatelessWidget {
           padding: const EdgeInsets.only(top: 5, bottom: 3),
           child: Row(
             children: [
-              Chip(label: Text(time)),
+              Chip(
+                label: Text(time),
+                backgroundColor: kDarkChipColor,
+              ),
               const SizedBox(width: 5),
-              Chip(label: Text(isAm ? 'AM' : 'PM')),
+              Chip(
+                label: Text(isAm ? 'AM' : 'PM'),
+                backgroundColor: kDarkChipColor,
+              ),
             ],
           ),
         ),
@@ -41,7 +48,7 @@ class StopTile extends StatelessWidget {
             onPressed: () => onDelete(),
             icon: const Icon(
               Icons.delete,
-              color: Colors.red,
+              color: kDarkDustbinColor,
             )),
       ),
     );

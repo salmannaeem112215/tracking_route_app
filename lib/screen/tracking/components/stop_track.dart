@@ -11,8 +11,9 @@ class StopTrack extends StatelessWidget {
       child: Column(
         children: [
           const TabBar(
-            labelColor: Colors.black,
+            labelColor: Color(0xFFF7F7F7),
             unselectedLabelColor: Colors.grey,
+            indicatorColor: Colors.white,
             tabs: [
               Tab(text: "Bus Stops"),
               Tab(text: "Tracking Points"),
