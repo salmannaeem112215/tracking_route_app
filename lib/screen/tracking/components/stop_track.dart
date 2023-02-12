@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tracking_route_app/constants.dart';
 import 'package:tracking_route_app/screen/tracking/components/bus_stops.dart';
+import 'package:tracking_route_app/screen/tracking/components/tracking_points.dart';
 
 class StopTrack extends StatelessWidget {
   const StopTrack({super.key, required this.index});
@@ -11,23 +13,19 @@ class StopTrack extends StatelessWidget {
       child: Column(
         children: [
           const TabBar(
-            labelColor: Color(0xFFF7F7F7),
+            labelColor: kDarkPrimaryTextGrey,
             unselectedLabelColor: Colors.grey,
-            indicatorColor: Colors.white,
+            indicatorColor: kDarkPrimaryTextGrey,
             tabs: [
-              Tab(text: "Bus Stops"),
               Tab(text: "Tracking Points"),
+              Tab(text: "Bus Stops"),
             ],
           ),
           Expanded(
             child: TabBarView(
               children: [
-                Container(
-                  child: BusStops(index: 1),
-                ),
-                Container(
-                  color: Colors.green,
-                ),
+                TrackingPoints(index: index),
+                BusStops(index: index),
               ],
             ),
           ),

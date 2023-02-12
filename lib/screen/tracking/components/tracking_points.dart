@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tracking_route_app/constants.dart';
+import 'package:tracking_route_app/screen/tracking/components/tracking_point_tile.dart';
 
 import '../../../components/custom_list_view.dart';
 import '../../../data/track.dart';
 import './stop_tile.dart';
 
-class BusStops extends StatelessWidget {
-  const BusStops({
+class TrackingPoints extends StatelessWidget {
+  const TrackingPoints({
     super.key,
     required this.index,
   });
@@ -16,17 +16,15 @@ class BusStops extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<Track>(
       builder: (context, track, child) => CustomListView(
-        title: 'Pickup Points',
+        title: 'Tracking Points',
         onCopy: () {},
         listView: ListView.builder(
-          itemCount: track.busStops.stops.length,
-          itemBuilder: (context, index) => StopTile(
+          itemCount: track.busPath.path.length,
+          itemBuilder: (context, index) => TrackingPointTile(
             no: index + 1,
-            title: track.busStops.stops[index].name,
-            time: '6:30',
-            isAm: true,
+            title: track.busPath.path[index].getLatLon().toString(),
             onDelete: () {
-              track.removeStop(index);
+              track.removePathPoint(index);
             },
           ),
         ),

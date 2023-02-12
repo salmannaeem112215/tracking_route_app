@@ -48,4 +48,9 @@ class Track extends ChangeNotifier {
     busStops.stops.removeAt(index);
     notifyListeners();
   }
+
+  void removePathPoint(int index) {
+    busPath.removeLocation(index);
+    notifyListeners();
+  }
 }

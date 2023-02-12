@@ -1,10 +1,10 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:tracking_route_app/constants.dart';
 import 'package:tracking_route_app/screen/tracking/components/bottom_navbar.dart';
 
 import '../../../components/dragable_scroll_sheet.dart';
-import './bus_stops.dart';
 import 'stop_track.dart';
 
 class Body extends StatelessWidget {
@@ -13,16 +13,19 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        child: DragScrollSheet(
-      child: Container(
-        color: Colors.white,
-        child: Center(child: Text('Map')),
+      child: DragScrollSheet(
+        bottomColor: kDarkBackground,
+        bottomNavbarHeight: BottomNavbar.bottomNavbarHeight,
+        // Map
+        child: Container(
+          color: Colors.white,
+          child: const Center(child: Text('Map')),
+        ),
+        // Dragable Sheet Content
+        bottomChild: StopTrack(
+          index: index,
+        ),
       ),
-      bottomChild: StopTrack(
-        index: index,
-      ),
-      bottomColor: Color(0xff333333),
-      bottomNavbarHeight: BottomNavbar.bottomNavbarHeight,
-    ));
+    );
   }
 }
