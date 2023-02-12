@@ -40,7 +40,7 @@ class _PlayPauseButtonState extends State<PlayPauseButton> {
         });
       },
       child: SizedBox(
-        height: 50,
+        height: 35,
         width: 176,
         child: RiveAnimation.asset(
           'assets/rive/play_pause_button.riv',

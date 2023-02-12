@@ -28,6 +28,23 @@ class Tracks extends ChangeNotifier {
           routeNo: "5",
           isMorning: true,
         ),
+        Stop(
+          name: 'Qainchi',
+          description: "Near KFC PLAZA",
+          location: const Location.latLon(31.46399057144011, 74.34861657311502),
+          timeOfArrival: TimeFuncs.stringToDateTime('2022-02-08 06:30:00'),
+          routeNo: "5",
+          isMorning: true,
+        ),
+        Stop(
+          name: 'Pacakges Gate 3',
+          description: "Near KFC PLAZA",
+          location:
+              const Location.latLon(31.472189828898024, 74.35277936151842),
+          timeOfArrival: TimeFuncs.stringToDateTime('2022-02-08 06:35:00'),
+          routeNo: "5",
+          isMorning: true,
+        ),
       ],
       path: [
         const Location.lonLat(74.348862, 31.464016),

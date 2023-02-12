@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tracking_route_app/constants.dart';
 
 import './components/body.dart';
 import './components/bottom_navbar.dart';
@@ -20,6 +21,7 @@ class TrackingScreen extends StatelessWidget {
     return ChangeNotifierProvider.value(
       value: track,
       child: Scaffold(
+        backgroundColor: kDarkBackground,
         appBar: AppBar(
           title: Text(
               '${track.name} - ${track.isMorning ? "Morning" : "Evening"}'),

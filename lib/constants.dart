@@ -12,3 +12,4 @@ const kDarkSecondaryTextGrey = Color(0xFFFFFFFF);
 const kDarkTileColor = Color(0xFFE0E0E0);
 const kDarkChipColor = Color(0xFFFFFFFF);
 const kDarkDustbinColor = Color(0xFFD32F2F);
+const kDarkBottomNavbarColor = Color(0xFFF9F9F9);

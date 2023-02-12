@@ -15,12 +15,14 @@ class Body extends StatelessWidget {
     return SingleChildScrollView(
         child: DragScrollSheet(
       child: Container(
+        color: Colors.white,
         child: Center(child: Text('Map')),
       ),
       bottomChild: StopTrack(
         index: index,
       ),
       bottomColor: Color(0xff333333),
+      bottomNavbarHeight: BottomNavbar.bottomNavbarHeight,
     ));
   }
 }
