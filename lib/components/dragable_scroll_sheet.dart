@@ -6,52 +6,72 @@ class DragScrollSheet extends StatelessWidget {
   const DragScrollSheet({
     super.key,
     required this.child,
-    required this.bottomSheetChild,
-    required this.bottomPadding,
+    required this.bottomChild,
+    this.bottomNavbarHeight = kBottomNavigationBarHeight,
+    this.bottomColor = Colors.white,
   });
   final Widget child;
-  final Widget bottomSheetChild;
-  final double bottomPadding;
+  final Widget bottomChild;
+  final double bottomNavbarHeight;
+  final Color bottomColor;
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final double avaliableHeight = mediaQuery.size.height -
-        kToolbarHeight -
-        mediaQuery.padding.top -
-        mediaQuery.padding.bottom;
 
-    final dragableScrolSheetHolderSize = avaliableHeight * 0.05;
+    const appBarHeight = kToolbarHeight;
+    const appBarTopHeight = 32;
+    const totalAppBarHeight = appBarHeight + appBarTopHeight;
+
+    const handelPercent = 0.05;
+    const sheetPercent = 0.70;
+    const totalPercent = handelPercent + sheetPercent;
+
+    final totalScreenHeight =
+        mediaQuery.size.height - totalAppBarHeight - bottomNavbarHeight;
+
+    final handelSize = totalScreenHeight * handelPercent;
+    final sheetSize = totalScreenHeight * sheetPercent;
+    final totalSheetSize = handelSize + sheetSize;
 
     return SingleChildScrollView(
       child: SizedBox(
-        height: avaliableHeight - dragableScrolSheetHolderSize - bottomPadding,
+        height: totalScreenHeight,
         child: Stack(
           children: [
-            child,
+            // main  Body
+            SizedBox(
+              height: totalScreenHeight,
+              child: child,
+            ),
+
+            // Dragable Sheet
             DraggableScrollableSheet(
+              // will open and close with little push
               snap: true,
-              initialChildSize: 0.05,
-              minChildSize: 0.05,
-              maxChildSize: 0.75,
+              initialChildSize: handelPercent,
+              minChildSize: handelPercent,
+              maxChildSize: totalPercent,
               builder: (context, scrollController) {
-                return SingleChildScrollView(
-                  controller: scrollController,
-                  child: SizedBox(
-                    height: avaliableHeight * 0.75 - bottomPadding,
+                return SizedBox(
+                  height: totalSheetSize + 50,
+                  child: SingleChildScrollView(
+                    controller: scrollController,
                     child: Container(
-                      color: Colors.white,
+                      decoration: BoxDecoration(
+                        color: bottomColor,
+                        borderRadius: topCurveRadius(handelSize),
+                      ),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
+                          getHandel(handelSize),
+
+                          // Sheet Body
                           SizedBox(
-                            width: 100,
-                            height: 30,
-                            child: Divider(
-                              thickness: 3,
-                              color: Colors.grey.shade600,
-                            ),
+                            height: sheetSize,
+                            child: bottomChild,
                           ),
-                          bottomSheetChild,
                         ],
                       ),
                     ),
@@ -61,6 +81,23 @@ class DragScrollSheet extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  BorderRadius topCurveRadius(double handelSize) {
+    return BorderRadius.vertical(
+      top: Radius.circular(handelSize),
+    );
+  }
+
+  SizedBox getHandel(double handelSize) {
+    return SizedBox(
+      width: 100,
+      height: handelSize,
+      child: const Divider(
+        thickness: 3,
+        color: Colors.white,
       ),
     );
   }

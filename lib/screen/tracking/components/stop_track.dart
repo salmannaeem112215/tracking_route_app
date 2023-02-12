@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tracking_route_app/screen/tracking/components/bus_stops.dart';
 
 class StopTrack extends StatelessWidget {
-  const StopTrack({super.key});
-
+  const StopTrack({super.key, required this.index});
+  final int index;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

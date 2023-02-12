@@ -1,6 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:tracking_route_app/screen/tracking/components/bottom_navbar.dart';
 
 import '../../../components/dragable_scroll_sheet.dart';
 import './bus_stops.dart';
@@ -11,18 +12,15 @@ class Body extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    final double avaliableHeight = mediaQuery.size.height -
-        mediaQuery.padding.top -
-        mediaQuery.padding.bottom -
-        kToolbarHeight;
-    final dragableScrolSheetHolderSize = avaliableHeight * 0.05;
-
     return SingleChildScrollView(
         child: DragScrollSheet(
-      bottomPadding: 92,
-      child: Placeholder(),
-      bottomSheetChild: Placeholder(),
+      child: Container(
+        child: Center(child: Text('Map')),
+      ),
+      bottomChild: StopTrack(
+        index: index,
+      ),
+      bottomColor: Color(0xff333333),
     ));
   }
 }
