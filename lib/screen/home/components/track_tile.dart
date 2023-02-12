@@ -3,9 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:tracking_route_app/screen/home/components/track_tile_front.dart';
 
-import '../../../data/track.dart';
 import '../../../data/tracks.dart';
-import '../../tracking/tracking_screen.dart';
 
 class TrackTile extends StatelessWidget {
   const TrackTile({

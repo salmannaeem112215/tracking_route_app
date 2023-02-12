@@ -6,7 +6,7 @@ import '../../../components/text_with_widget.dart';
 import '../../../constants.dart';
 import '../../../data/track.dart';
 import '../../tracking/tracking_screen.dart';
-import 'track_tile_chips.dart';
+import './track_tile_chips.dart';
 
 class TrackTileFront extends StatelessWidget {
   const TrackTileFront({super.key, required this.index});

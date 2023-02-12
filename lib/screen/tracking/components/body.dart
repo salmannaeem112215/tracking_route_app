@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import './bus_stops.dart';
+import 'stop_track.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key, required this.index});
@@ -18,23 +19,14 @@ class Body extends StatelessWidget {
 
     return SingleChildScrollView(
       child: SizedBox(
-        height: mapHeight + boxHeight + boxHeight,
+        height: mapHeight + boxHeight,
         child: Column(
           children: [
             SizedBox(
               height: mapHeight,
               child: const Placeholder(),
             ),
-            Container(
-              height: boxHeight,
-              child: BusStops(
-                index: index,
-              ),
-            ),
-            Container(
-              height: boxHeight,
-              child: const Placeholder(),
-            )
+            Container(height: boxHeight, child: StopTrack()),
           ],
         ),
       ),
