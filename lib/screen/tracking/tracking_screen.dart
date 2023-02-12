@@ -12,7 +12,8 @@ class TrackingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int index = ModalRoute.of(context)!.settings.arguments as int;
+    // int index = ModalRoute.of(context)!.settings.arguments as int;
+    int index = 0;
     final track = Provider.of<Tracks>(listen: false, context).getTrackAt(index);
 
     // .value to not dispose track

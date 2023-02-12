@@ -11,35 +11,39 @@ class BottomNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10, left: 20, right: 20),
-      padding: const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
-      decoration: const BoxDecoration(
-          color: Color.fromRGBO(96, 125, 139, 0.1),
-          borderRadius: BorderRadius.vertical(
-              top: Radius.circular(20), bottom: Radius.circular(20))),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          const TextWithWidget(child: PlayPauseButton(), text: 'Tracking'),
-          // const Spacer(),
-          TextWithWidget(
-            text: 'Add Stop',
-            child: InkWell(
-              borderRadius: BorderRadius.circular(10),
-              onTap: () => showDialog(
-                context: context,
-                builder: (context) => AddStop(onSave: addStop),
-              ),
-              child: Icon(
-                Icons.add_location_rounded,
-                size: 50,
-                color: Theme.of(context).primaryColor,
+      height: 96,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 10, left: 20, right: 20),
+        padding:
+            const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
+        decoration: const BoxDecoration(
+            color: Color.fromRGBO(96, 125, 139, 0.1),
+            borderRadius: BorderRadius.vertical(
+                top: Radius.circular(20), bottom: Radius.circular(20))),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            const TextWithWidget(child: PlayPauseButton(), text: 'Tracking'),
+            // const Spacer(),
+            TextWithWidget(
+              text: 'Add Stop',
+              child: InkWell(
+                borderRadius: BorderRadius.circular(10),
+                onTap: () => showDialog(
+                  context: context,
+                  builder: (context) => AddStop(onSave: addStop),
+                ),
+                child: Icon(
+                  Icons.add_location_rounded,
+                  size: 50,
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
             ),
-          ),
-          // const Spacer(),
-        ],
+            // const Spacer(),
+          ],
+        ),
       ),
     );
   }

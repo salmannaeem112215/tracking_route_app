@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../components/dragable_scroll_sheet.dart';
 import './bus_stops.dart';
 import 'stop_track.dart';
 
@@ -11,25 +12,17 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    double screenSize = mediaQuery.size.height -
+    final double avaliableHeight = mediaQuery.size.height -
         mediaQuery.padding.top -
-        mediaQuery.padding.bottom;
-    double mapHeight = screenSize / 2;
-    double boxHeight = screenSize / 2;
+        mediaQuery.padding.bottom -
+        kToolbarHeight;
+    final dragableScrolSheetHolderSize = avaliableHeight * 0.05;
 
     return SingleChildScrollView(
-      child: SizedBox(
-        height: mapHeight + boxHeight,
-        child: Column(
-          children: [
-            SizedBox(
-              height: mapHeight,
-              child: const Placeholder(),
-            ),
-            Container(height: boxHeight, child: StopTrack()),
-          ],
-        ),
-      ),
-    );
+        child: DragScrollSheet(
+      bottomPadding: 92,
+      child: Placeholder(),
+      bottomSheetChild: Placeholder(),
+    ));
   }
 }
