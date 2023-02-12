@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './components/add_track_form.dart';
+import 'components/add_track.dart';
 import './components/body.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
           child: const Icon(Icons.add),
           onPressed: () {
             showDialog(
-                context: context, builder: (context) => const AddTrackForm());
+                context: context, builder: (context) => const AddTrack());
           }),
     );
   }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TextWithWidget extends StatelessWidget {
-  const TextWithWidget({super.key, required this.widget, required this.text});
-  final Widget widget;
+  const TextWithWidget({super.key, required this.child, required this.text});
+  final Widget child;
   final String text;
 
   @override
@@ -10,7 +10,7 @@ class TextWithWidget extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        widget,
+        child,
         Text(text),
       ],
     );

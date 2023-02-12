@@ -1,26 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
+import 'package:tracking_route_app/screen/home/components/track_tile_front.dart';
 
 import '../../../data/track.dart';
+import '../../../data/tracks.dart';
+import '../../tracking/tracking_screen.dart';
 
 class TrackTile extends StatelessWidget {
   const TrackTile({
     super.key,
-    required this.trackName,
-    required this.isMoring,
-    required this.totalStops,
-    required this.onPress,
-    required this.onDelete,
-    required this.onUpload,
+    required this.index,
   });
-  final String trackName;
-  final int totalStops;
-  final bool isMoring;
-
-  final Function onPress;
-  final Function onDelete;
-  final Function onUpload;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -31,78 +23,29 @@ class TrackTile extends StatelessWidget {
       ),
       child: Slidable(
         endActionPane: buttons(),
-        child: trackTile(),
+        child: TrackTileFront(
+          index: index,
+        ),
       ),
     );
-  }
-
-  Widget trackTile() {
-    return Consumer<Track>(
-        builder: (context, track, child) => Container(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius:
-                    const BorderRadius.horizontal(left: Radius.circular(10)),
-              ),
-              child: ListTile(
-                title: RichText(
-                  text: TextSpan(
-                      text: 'ROUTE : ',
-                      children: [
-                        TextSpan(
-                            text: track.name,
-                            style:
-                                const TextStyle(fontWeight: FontWeight.normal))
-                      ],
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      )),
-                ),
-                trailing: IconButton(
-                  icon: const Icon(Icons.arrow_forward_ios_rounded),
-                  onPressed: () => onPress(),
-                ),
-                subtitle: Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Chip(
-                            label: Text('${track.busStops.stops.length} Stops'),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Chip(
-                            label:
-                                Text(track.isMorning ? "Morning" : "Evening"),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ));
   }
 
   ActionPane buttons() {
     return ActionPane(motion: const StretchMotion(), children: [
       // Upload Button
       SlidableAction(
-        onPressed: (ctx) => onUpload(),
+        onPressed: (ctx) => () {
+          print('upload Button press');
+        },
         icon: Icons.cloud_upload_rounded,
         foregroundColor: Colors.white,
         backgroundColor: Colors.green.shade300,
       ),
       // Delete Button
       SlidableAction(
-        onPressed: (ctx) => onDelete(),
+        onPressed: (ctx) {
+          Provider.of<Tracks>(ctx, listen: false).removeTrack(index);
+        },
         icon: Icons.delete,
         borderRadius: const BorderRadius.horizontal(right: Radius.circular(10)),
         backgroundColor: Colors.red.shade500,

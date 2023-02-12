@@ -21,11 +21,11 @@ class BottomNavbar extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const TextWithWidget(widget: PlayPauseButton(), text: 'Tracking'),
+          const TextWithWidget(child: PlayPauseButton(), text: 'Tracking'),
           // const Spacer(),
           TextWithWidget(
             text: 'Add Stop',
-            widget: InkWell(
+            child: InkWell(
               borderRadius: BorderRadius.circular(10),
               onTap: () => showDialog(
                 context: context,

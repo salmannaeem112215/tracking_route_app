@@ -1,72 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:tracking_route_app/components/save_button.dart';
 import 'package:tracking_route_app/components/two_checkbox.dart';
-import 'package:tracking_route_app/data/tracks.dart';
-import 'package:tracking_route_app/screen/home/components/route_name_field.dart';
 
-import '../../../components/cancel_button.dart';
-
-class AddTrackForm extends StatefulWidget {
-  const AddTrackForm({super.key});
-
-  @override
-  State<AddTrackForm> createState() => _AddTrackFormState();
-}
-
-class _AddTrackFormState extends State<AddTrackForm> {
-  bool _isMorning = true;
-  final _nameController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
-
+class AddTrackForm extends StatelessWidget {
+  const AddTrackForm(
+      {super.key,
+      required this.isMorning,
+      required this.nameController,
+      required this.formKey});
+  final Function(bool) isMorning;
+  final TextEditingController nameController;
+  final GlobalKey<FormState> formKey;
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      content: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            RouteNameField(controller: _nameController),
-            const SizedBox(height: 10),
-            TwoCheckBox(
-              updateValue: _checkBoxClick,
-              firstValue: 'Morning ',
-              secondValue: 'Evening',
+    return Form(
+      key: formKey,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Route Name asking
+          TextFormField(
+            controller: nameController,
+            validator: _validateRouteName,
+            decoration: InputDecoration(
+              label: const Text('Route Name'),
+              hintText: "5",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
             ),
-          ],
-        ),
+          ),
+
+          const SizedBox(height: 10),
+
+          // Is mornign or Eveneing Checkboxed
+          TwoCheckBox(
+            updateValue: isMorning,
+            firstValue: 'Morning ',
+            secondValue: 'Evening',
+          ),
+        ],
       ),
-      actions: [
-        SaveButton(onPress: () => _save(context)),
-        const SizedBox(width: 5),
-        CancelButton(onPress: () => _cancel(context)),
-      ],
     );
   }
 
-  void _checkBoxClick(bool val) {
-    _isMorning = val;
-  }
-
-  void _clear() {
-    _nameController.text = "";
-  }
-
-  void _cancel(BuildContext context) {
-    Navigator.pop(context);
-    _clear();
-  }
-
-  void _save(BuildContext context) {
-    if (_formKey.currentState!.validate()) {
-      Provider.of<Tracks>(listen: false, context).addTrack(
-        trackName: _nameController.text,
-        isMorning: _isMorning,
-      );
-      Navigator.pop(context);
-      _clear();
+  // Validator for Route Name
+  String? _validateRouteName(val) {
+    if (val!.isEmpty) {
+      return "Enter Route Name";
+    } else {
+      return null;
     }
   }
 }
