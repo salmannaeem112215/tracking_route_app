@@ -11,14 +11,6 @@ class Track extends ChangeNotifier {
   final bool isMorning;
   Stops busStops = Stops([]);
   PathPoints busPath = PathPoints([]);
-  Track.n()
-      : name = '',
-        isMorning = true;
-  Track.databas(
-      {required this.name,
-      required this.busStops,
-      required this.busPath,
-      required this.isMorning});
 
   Track({
     required this.name,

@@ -19,6 +19,7 @@ class _TwoCheckBoxState extends State<TwoCheckBox> {
   void _checkBoxClick(bool val) {
     setState(() {
       isFirst = val;
+      // this update function will update value of parent class
       widget.updateValue(val);
     });
   }

@@ -5,7 +5,7 @@ class Stops {
   Stops(List<Stop> s) {
     stops = s;
   }
-  Stops.n() : stops = [];
+  // Stops.n() : stops = [];
 
   List<Stop> stops = [];
 

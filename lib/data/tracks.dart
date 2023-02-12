@@ -72,12 +72,6 @@ class Tracks extends ChangeNotifier {
     )
   ];
 
-  // Constructor
-  Tracks();
-  Tracks.database(List<Track> t) {
-    _tracks = t;
-  }
-
   //Getter
   // get Track List
   List<Track> getTracks() {
