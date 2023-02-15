@@ -17,7 +17,6 @@ class TrackingScreen extends StatelessWidget {
     // int index = 0; // for testing
     final track = Provider.of<Tracks>(listen: false, context).getTrackAt(index);
 
-    print('Track Index $index');
     // .value to not dispose track
     return ChangeNotifierProvider.value(
       value: track,
