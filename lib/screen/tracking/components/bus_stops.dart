@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tracking_route_app/constants.dart';
 
 import '../../../components/custom_list_view.dart';
 import '../../../data/track.dart';

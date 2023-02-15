@@ -4,7 +4,6 @@ import 'package:tracking_route_app/screen/tracking/components/tracking_point_til
 
 import '../../../components/custom_list_view.dart';
 import '../../../data/track.dart';
-import './stop_tile.dart';
 
 class TrackingPoints extends StatelessWidget {
   const TrackingPoints({

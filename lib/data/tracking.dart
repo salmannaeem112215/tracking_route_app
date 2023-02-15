@@ -1,16 +1,19 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
 class TrackingClass {
   bool isTracking = false;
   int trackIndex = -1;
-  Timer? _timer = null;
+  Timer? _timer;
 
   void startTimer(Duration duration) {
     if (_timer == null) {
+      // No Other Tracking Is Active
       _timer = Timer.periodic(duration, (timer) {
+        // ignore: avoid_print
         print('Hello world!');
       });
+    } else {
+      // Other Tracking is Active
     }
   }
 

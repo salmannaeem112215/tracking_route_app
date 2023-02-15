@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_final_fields
+
 import 'package:flutter/material.dart';
 import 'package:tracking_route_app/models/location.dart';
 import 'package:tracking_route_app/models/stop.dart';
