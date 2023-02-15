@@ -12,6 +12,8 @@ class Track extends ChangeNotifier {
   Stops busStops = Stops([]);
   PathPoints busPath = PathPoints([]);
 
+  bool isTracking = false;
+
   Track({
     required this.name,
     required this.isMorning,
@@ -44,6 +46,11 @@ class Track extends ChangeNotifier {
     notifyListeners();
   }
 
+  void addPathPoint() {
+    busPath.addLocation(lat: 34, lon: 72);
+    notifyListeners();
+  }
+
   void removeStop(int index) {
     busStops.stops.removeAt(index);
     notifyListeners();
@@ -52,5 +59,13 @@ class Track extends ChangeNotifier {
   void removePathPoint(int index) {
     busPath.removeLocation(index);
     notifyListeners();
+  }
+
+  void stopTracking() {
+    isTracking = true;
+  }
+
+  void startTracking() {
+    isTracking = false;
   }
 }
