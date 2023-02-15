@@ -6,8 +6,13 @@ import './play_pause_button.dart';
 import '../../../components/text_with_widget.dart';
 
 class BottomNavbar extends StatelessWidget {
-  const BottomNavbar({super.key, required this.addStop});
+  const BottomNavbar({
+    super.key,
+    required this.addStop,
+    required this.trackIndex,
+  });
   final Function(String) addStop;
+  final int trackIndex;
   static double bottomNavbarHeight = 70;
 
   @override
@@ -26,9 +31,9 @@ class BottomNavbar extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const TextWithWidget(
+            TextWithWidget(
               text: 'Tracking',
-              child: PlayPauseButton(),
+              child: PlayPauseButton(trackIndex: trackIndex),
             ),
             TextWithWidget(
               text: 'Add Stop',
