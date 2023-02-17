@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../models/location.dart';
 
-class PathPoints extends ChangeNotifier {
-  PathPoints(List<Location> l) {
+class BusPath extends ChangeNotifier {
+  BusPath(List<Location> l) {
     path = l;
   }
 

@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 
 import '../../../components/prompt.dart';
-import '../../../data/track.dart';
 import '../../../data/tracking.dart';
 import '../../../data/tracks.dart';
 
@@ -62,9 +61,9 @@ class _PlayPauseButtonState extends State<PlayPauseButton> {
   // Function Included in InitState
   // To Set State Of Button Depending Upon the Tracking
   void _setButtonState() {
-    if (Tracking.tracking.isTracking) {
+    if (Tracking.isTracking) {
       // Tracking is Active
-      if (widget.trackIndex == Tracking.tracking.trackIndex) {
+      if (widget.trackIndex == Tracking.trackIndex) {
         // Tracking Active & Same Page
         btnInStartState();
       } else {

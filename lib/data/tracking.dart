@@ -1,46 +1,20 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-
-class TrackingClass {
-  bool isTracking = false;
-  int trackIndex = -1;
-  Timer? _timer;
-
-  void startTimer(Duration duration, VoidCallback func) {
-    if (_timer == null) {
-      // No Other Tracking Is Active
-      _timer = Timer.periodic(duration, (timer) {
-        // ignore: avoid_print
-        print('Hello world!');
-        func();
-      });
-    } else {
-      // Other Tracking is Active
-    }
-  }
-
-  void stopTimer() {
-    if (_timer != null) {
-      trackIndex = -1;
-      _timer!.cancel();
-      _timer = null;
-    }
-  }
-}
+import '../functions/function_timer.dart';
 
 class Tracking {
-  static TrackingClass tracking = TrackingClass();
+  static FunctionTimer funcTimer = FunctionTimer();
+  static bool isTracking = false;
+  static int trackIndex = -1;
 
-  static startTracking(int trackIndex, Duration d, VoidCallback func) {
-    tracking.trackIndex = trackIndex;
-    tracking.isTracking = true;
-    tracking.startTimer(d, func);
+  static startTracking(int tIndex, Duration duration, VoidCallback func) {
+    trackIndex = tIndex;
+    isTracking = true;
+    funcTimer.start(duration, func);
   }
 
   static stopTracking() {
-    tracking.trackIndex = -1;
-    tracking.isTracking = false;
-    tracking.stopTimer();
+    trackIndex = -1;
+    isTracking = false;
+    funcTimer.stop();
   }
 }

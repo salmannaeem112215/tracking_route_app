@@ -11,7 +11,7 @@ class TrackingPointTile extends StatelessWidget {
 
   final int no;
   final String title;
-  final Function onDelete;
+  final VoidCallback onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class TrackingPointTile extends StatelessWidget {
         leading: Text('#$no'),
         title: Text(title),
         trailing: IconButton(
-            onPressed: () => onDelete(),
+            onPressed: onDelete,
             icon: const Icon(
               Icons.delete,
               color: kDarkDustbinColor,

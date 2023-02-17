@@ -10,7 +10,7 @@ class Track extends ChangeNotifier {
   final String name;
   final bool isMorning;
   Stops busStops = Stops([]);
-  PathPoints busPath = PathPoints([]);
+  BusPath busPath = BusPath([]);
 
   bool isTracking = false;
 
