@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/path_points.dart';
+import 'path_points.dart';
 
 import '../models/stop.dart';
 import '../models/location.dart';
@@ -47,7 +47,7 @@ class Track extends ChangeNotifier {
   }
 
   void addPathPoint() {
-    busPath.addLocation(lat: 34, lon: 72);
+    busPath.addLocation();
     notifyListeners();
   }
 

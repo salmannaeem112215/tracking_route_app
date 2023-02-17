@@ -29,6 +29,7 @@ class BusStops extends StatelessWidget {
             },
           ),
         ),
+        onDelete: () {},
       ),
     );
   }

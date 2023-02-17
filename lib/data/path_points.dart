@@ -1,6 +1,8 @@
-import './location.dart';
+import 'package:flutter/material.dart';
 
-class PathPoints {
+import '../models/location.dart';
+
+class PathPoints extends ChangeNotifier {
   PathPoints(List<Location> l) {
     path = l;
   }
@@ -27,11 +29,18 @@ class PathPoints {
     return lonLat;
   }
 
-  void addLocation({required double lat, required double lon}) {
-    path.add(Location(lat: lat, lon: lon));
+  void addLocation() {
+    path.add(Location(lat: 34, lon: 37));
+    notifyListeners();
   }
 
   void removeLocation(int index) {
     path.removeAt(index);
+    notifyListeners();
+  }
+
+  void clearLocations() {
+    path.clear();
+    notifyListeners();
   }
 }

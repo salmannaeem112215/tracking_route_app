@@ -6,10 +6,12 @@ class CustomListView extends StatelessWidget {
     super.key,
     required this.title,
     required this.onCopy,
+    required this.onDelete,
     required this.listView,
   });
   final String title;
   final VoidCallback onCopy;
+  final VoidCallback onDelete;
   final ListView listView;
 
   @override
@@ -33,6 +35,19 @@ class CustomListView extends StatelessWidget {
                 ),
               ),
               GestureDetector(
+                onTap: onDelete,
+                child: Row(
+                  children: const [
+                    Icon(
+                      Icons.delete,
+                      color: kDarkChipColor,
+                    ),
+                    SizedBox(width: 3),
+                    Text('Del', style: TextStyle(color: kDarkPrimaryTextGrey)),
+                  ],
+                ),
+              ),
+              GestureDetector(
                 onTap: onCopy,
                 child: Row(
                   children: const [
@@ -44,7 +59,7 @@ class CustomListView extends StatelessWidget {
                     Text('Copy', style: TextStyle(color: kDarkPrimaryTextGrey)),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

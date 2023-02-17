@@ -20,27 +20,30 @@ class TrackingScreen extends StatelessWidget {
     // .value to not dispose track
     return ChangeNotifierProvider.value(
       value: track,
-      child: Scaffold(
-        backgroundColor: kDarkBackground,
-        appBar: AppBar(
-          title: Text(
-              '${track.name} - ${track.isMorning ? "Morning" : "Evening"}'),
-          centerTitle: true,
-        ),
-        bottomNavigationBar: BottomNavbar(
-          trackIndex: index,
-          addStop: (String name) {
-            track.addStop(
-              title: name,
-              location: const Location(lat: 32, lon: 64), // default Location
-              timeOfArrival: DateTime.now(),
-              routeNo: track.name,
-              isMorning: track.isMorning,
-            );
-          },
-        ),
-        body: Body(
-          index: index,
+      child: ChangeNotifierProvider.value(
+        value: track.busPath,
+        child: Scaffold(
+          backgroundColor: kDarkBackground,
+          appBar: AppBar(
+            title: Text(
+                '${track.name} - ${track.isMorning ? "Morning" : "Evening"}'),
+            centerTitle: true,
+          ),
+          bottomNavigationBar: BottomNavbar(
+            trackIndex: index,
+            addStop: (String name) {
+              track.addStop(
+                title: name,
+                location: const Location(lat: 32, lon: 64), // default Location
+                timeOfArrival: DateTime.now(),
+                routeNo: track.name,
+                isMorning: track.isMorning,
+              );
+            },
+          ),
+          body: Body(
+            index: index,
+          ),
         ),
       ),
     );

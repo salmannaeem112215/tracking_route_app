@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 
 import '../../../components/prompt.dart';
+import '../../../data/track.dart';
 import '../../../data/tracking.dart';
+import '../../../data/tracks.dart';
 
 class PlayPauseButton extends StatefulWidget {
   const PlayPauseButton({
@@ -21,6 +24,8 @@ class _PlayPauseButtonState extends State<PlayPauseButton> {
   final stopIcon = SimpleAnimation("Demo 2");
   bool isActive = false;
 
+  void addoints() {}
+
   @override
   void initState() {
     // ignore: todo
@@ -31,8 +36,10 @@ class _PlayPauseButtonState extends State<PlayPauseButton> {
 
   @override
   Widget build(BuildContext context) {
+    final track = Provider.of<Tracks>(listen: false, context)
+        .getTrackAt(widget.trackIndex);
     return GestureDetector(
-      onTap: onPress,
+      onTap: () => onPress(track.busPath.addLocation),
       child: playPauseRive(),
     );
   }
@@ -71,16 +78,16 @@ class _PlayPauseButtonState extends State<PlayPauseButton> {
   }
 
   // Function Call When Button is Pressed
-  void onPress() {
+  void onPress(VoidCallback func) {
     isActive = !isActive;
     if (isActive) {
-      onStart(context);
+      onStart(context, func);
     } else {
       onEnd();
     }
   }
 
-  void onStart(BuildContext ctx) async {
+  void onStart(BuildContext ctx, VoidCallback func) async {
     // Ask Duration
     Duration? duration = await Prompt.promptDuration(ctx);
 
@@ -88,7 +95,7 @@ class _PlayPauseButtonState extends State<PlayPauseButton> {
       // user Give the Duration
       setState(() {
         btnInStartState();
-        Tracking.startTracking(widget.trackIndex, duration);
+        Tracking.startTracking(widget.trackIndex, duration, func);
       });
     } else {
       // Invalid Duration or Close
