@@ -32,8 +32,11 @@ class BusPath extends ChangeNotifier {
   }
 
   void addLocation() {
-    path.add(Location(lat: 34, lon: 37));
-    notifyListeners();
+    LocationServices.determinePosition().then((position) {
+      path.add(Location(lat: position.latitude, lon: position.longitude));
+      print('${position.latitude},${position.longitude}');
+      notifyListeners();
+    });
   }
 
   void removeLocation(int index) {
