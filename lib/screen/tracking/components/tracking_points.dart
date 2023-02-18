@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../data/path_points.dart';
+import '../../../data/bus_path.dart';
 import '../../../components/custom_list_view.dart';
 import './tracking_point_tile.dart';
 
@@ -16,7 +16,7 @@ class TrackingPoints extends StatelessWidget {
     return Consumer<BusPath>(
       builder: (ctx, busPath, child) => CustomListView(
         title: 'Tracking Points',
-        onCopy: () {},
+        onCopy: busPath.copyBusPathToClipboard,
         onDelete: busPath.clearLocations,
         listView: ListView.builder(
           itemCount: busPath.path.length,

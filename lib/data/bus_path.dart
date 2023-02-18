@@ -43,4 +43,8 @@ class BusPath extends ChangeNotifier {
     path.clear();
     notifyListeners();
   }
+
+  void copyBusPathToClipboard() {
+    print('Copy To Clipboard');
+  }
 }

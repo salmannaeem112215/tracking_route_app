@@ -16,7 +16,8 @@ class BusStops extends StatelessWidget {
     return Consumer<Track>(
       builder: (context, track, child) => CustomListView(
         title: 'Pickup Points',
-        onCopy: () {},
+        onCopy: track.copyStopsToClipboard,
+        onDelete: track.clearStops,
         listView: ListView.builder(
           itemCount: track.busStops.stops.length,
           itemBuilder: (context, index) => StopTile(
@@ -24,12 +25,9 @@ class BusStops extends StatelessWidget {
             title: track.busStops.stops[index].name,
             time: '6:30',
             isAm: true,
-            onDelete: () {
-              track.removeStop(index);
-            },
+            onDelete: () => track.removeStop(index),
           ),
         ),
-        onDelete: () {},
       ),
     );
   }

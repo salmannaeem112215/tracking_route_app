@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'path_points.dart';
+import 'bus_path.dart';
 
 import '../models/stop.dart';
 import '../models/location.dart';
@@ -56,6 +56,11 @@ class Track extends ChangeNotifier {
     notifyListeners();
   }
 
+  void clearStops() {
+    busStops.stops.clear();
+    notifyListeners();
+  }
+
   void removePathPoint(int index) {
     busPath.removeLocation(index);
     notifyListeners();
@@ -67,5 +72,10 @@ class Track extends ChangeNotifier {
 
   void startTracking() {
     isTracking = false;
+  }
+
+  void copyStopsToClipboard() {
+    //
+    print('Content Copy to Clipboard');
   }
 }
