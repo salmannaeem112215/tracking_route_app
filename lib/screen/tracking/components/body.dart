@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:tracking_route_app/constants.dart';
+import 'package:tracking_route_app/screen/map/map_map_box.dart';
 import 'package:tracking_route_app/screen/tracking/components/bottom_navbar.dart';
 
 import '../../../components/dragable_scroll_sheet.dart';
@@ -18,9 +19,7 @@ class Body extends StatelessWidget {
         bottomNavbarHeight: BottomNavbar.bottomNavbarHeight,
         // Map
         child: Container(
-          color: Colors.white,
-          child: const Center(child: Text('Map')),
-        ),
+            color: Colors.white, child: MapMapbox(onMapCreated: () {})),
         // Dragable Sheet Content
         bottomChild: StopTrack(
           index: index,
