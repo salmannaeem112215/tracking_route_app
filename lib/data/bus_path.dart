@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
+import '../functions/location_services.dart';
 import '../models/location.dart';
 
 class BusPath extends ChangeNotifier {
@@ -44,7 +46,10 @@ class BusPath extends ChangeNotifier {
     notifyListeners();
   }
 
-  void copyBusPathToClipboard() {
+  Future<void> copyBusPathToClipboard() async {
     print('Copy To Clipboard');
+    Position position = await LocationServices.determinePosition();
+    final positionDetails = LocationServices.getPositionDetails(position);
+    print(positionDetails);
   }
 }
